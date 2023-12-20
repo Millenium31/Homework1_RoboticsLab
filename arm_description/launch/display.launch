@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<!--Load parameter from URDF file-->
+<param name="robot_description" command="$(find xacro)/xacro '$(find
+arm_description)/urdf/arm.urdf.xacro' "/>
+
+<!--Start Robot Nodes-->
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+<!--Start Rviz Node-->
+<!--Note to launch the rviz node you need to pass as argument the rviz enviroment that you want to spawn-->
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm_description)/config/config.rviz" />
+
+</launch>
+
+
